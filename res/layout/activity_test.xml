@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlTest"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="180dp"
+        android:layout_marginLeft="90dp"
+        android:text="Button" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="42dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <com.matteo.matteolocationhistory.component.LockScreenView
+        android:id="@+id/lsvLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ></com.matteo.matteolocationhistory.component.LockScreenView>
+
+</RelativeLayout>

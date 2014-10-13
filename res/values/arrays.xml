@@ -1,0 +1,8 @@
+
+    <resources>
+        <string-array name="CategoryList">
+            <item >日期</item>
+            <item >地点</item>
+            <item >地图</item>
+        </string-array>
+    </resources>
