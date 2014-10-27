@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:umadsdk="http://schemas.android.com/apk/res/com.LoveBus"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_theme_blue"
+        android:orientation="vertical" >
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+            android:paddingTop="10dip" >
+
+            <TextView
+                android:id="@+id/tvTabDay"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/Day"
+                android:textColor="@color/White"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvTabSite"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/Site"
+                android:textColor="@color/LightWhite"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="3dip" >
+
+            <ImageView
+                android:id="@+id/iv_bottom_line"
+                android:layout_width="120dip"
+                android:layout_height="2dip"
+                android:layout_marginLeft="30dip"
+                android:scaleType="matrix"
+                android:src="#fff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="#000000"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+</LinearLayout>

@@ -1,79 +1,100 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="${relativePackage}.${activityClass}" >
-
-    <RelativeLayout
-        android:id="@+id/rlDistance"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:id="@+id/rlHome">
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mapHistory"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="2"
-        android:background="@color/Blue"
-        android:orientation="horizontal" >
+        android:clickable="true" />
 
-        <TextView
-            android:id="@+id/tvDistance"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_centerInParent="true" >
-        </TextView>
-    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/llMid"
+        android:id="@+id/llNav"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="2"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/navlayout"
+        android:orientation="horizontal" 
+        android:baselineAligned="false" >
 
-        <RelativeLayout
-            android:id="@+id/rlPic"
+        <LinearLayout
+            android:id="@+id/llStatus"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/navitemlayout"
             android:layout_weight="1"
-            android:background="@color/Red" >
+            android:gravity="center" >
 
             <TextView
-                android:id="@+id/tvPic"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_centerInParent="true" >
-            </TextView>
-        </RelativeLayout>
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Trajectory" />
+        </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rlSite"
+        <LinearLayout
+            android:id="@+id/llList"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/navitemlayout"
             android:layout_weight="1"
-            android:background="@color/Red" >
+            android:gravity="center" >
 
             <TextView
-                android:id="@+id/tvSite"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_centerInParent="true"
-                android:background="@color/Yellow" >
-            </TextView>
-        </RelativeLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/List" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCapture"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/navitemlayout"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Capture" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/My" />
+        </LinearLayout>
     </LinearLayout>
-
     <RelativeLayout
-        android:id="@+id/rlCamera"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="3"
-        android:background="@color/Green" >
-
-        <TextView
-            android:id="@+id/tvCarema"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_centerInParent="true" >
-        </TextView>
-    </RelativeLayout>
-
-</LinearLayout>
+        android:id="@+id/rlDayPicker" 
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/daypickerunclicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"></RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rlPlay" 
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_play"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="140dp"
+        android:layout_marginBottom="10dp"></RelativeLayout>
+</RelativeLayout>

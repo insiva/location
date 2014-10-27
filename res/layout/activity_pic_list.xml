@@ -7,7 +7,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:textSize="25px"/>
-<com.matteo.matteolocationhistory.component.RefreshListView
+<com.mlh.component.RefreshListView
     android:id="@+id/lvPic"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MatteoLocationHistory</string>
+    <string name="app_name">MLH</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_map">MapActivity</string>
@@ -58,5 +58,34 @@
 
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_site_list">SiteListActivity</string>
+    <string name="title_activity_mt_home">MtHomeActivity</string>
+    <string name="My">我的</string>
+    <string name="Trajectory">轨迹</string>
+    <string name="Capture">拍照</string>
+    <string name="List">列表</string>
+
+    <color name="HalfWhite">#50ffffff</color>
+    <color name="Gray">#cccccc</color>
+
+    <string name="Confirm">确定</string>
+
+    <color name="SoftBlue">#4b84ec</color>
+    <color name="HardGray">#999999</color>
+
+    <string name="Picture">照片</string>
+
+    <color name="DarkGreen">#24a900</color>
+
+    <string name="title_activity_category">CategoryActivity</string>
+
+    <color name="LightWhite">#ddd</color>
+
+    <string name="Day">日期</string>
+    <string name="Site">地点</string>
+
+    <color name="MtBlue">#158684</color>
+
+    <string name="title_activity_trace">TraceActivity</string>
+    <string name="title_activity_album">AlbumActivity</string>
 
 </resources>

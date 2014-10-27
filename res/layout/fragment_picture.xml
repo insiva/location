@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/bg_btn"
         android:text="@string/PrePicture" />
 
     <Button
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_btn"
         android:text="@string/RawPicture" />
 
     <Button
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/bg_btn"
         android:text="@string/NextPicture" />
 
     <ImageView
@@ -43,7 +46,6 @@
         android:layout_width="fill_parent"
         android:layout_height="800px"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
