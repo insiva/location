@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnCate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25px" />
+
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/llRlv"
+    android:orientation="vertical">
+
+        <com.mlh.component.RefreshListView
+            android:id="@+id/lvPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
