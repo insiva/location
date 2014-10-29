@@ -24,6 +24,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
 
+/**
+ * @author Matteo
+ *相机Activity，首先获取当前位置，然后调用系统照相应用
+ */
 public class CameraActivity extends Activity {
 
 	private String picName;

@@ -27,9 +27,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+/**
+ * @author Matteo
+ *HTTP连接类，不能实例化，只提供相关联网函数
+ */
 public class HttpConnnection {
+	
+	/**
+	 * 根据URL获取XML文件
+	 * @param url 获取XML文件的地址
+	 * @return XML字符串
+	 */
 	public static String getXml(String url) {
-		Config.Log(url);
 		HttpGet httpRequest = new HttpGet(url);
 		String xmlStr = null;
 		try {
@@ -57,19 +66,29 @@ public class HttpConnnection {
 		return xmlStr;
 	}
 
-	public static void getXMLByThread(final String u, final Handler hdl) {
+	/**
+	 * 在一个新线程中获取XML文件，并通过Handler处理
+	 * @param url 获取XML文件的地址
+	 * @param hdl 一个Handler，获取XML后，通过此Handler进行处理
+	 */
+	public static void getXMLByThread(final String url, final Handler hdl) {
 		Thread tr = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				HttpConnnection.getXml(u, hdl);
+				HttpConnnection.getXml(url, hdl);
 			}
 		});
 		tr.start();
 	}
-	
-	public static void getXml(String u,Handler hdl){
-		String xmlStr=HttpConnnection.getXml(u);
+
+	/**
+	 * 获取XML文件，并通过Handler处理
+	 * @param url 获取XML文件的地址
+	 * @param hdl 一个Handler，获取XML后，通过此Handler进行处理
+	 */
+	public static void getXml(String url,Handler hdl){
+		String xmlStr=HttpConnnection.getXml(url);
 		Message msg = new Message();
 		msg.what = Config.WHAT_XML;
 		Bundle bdl = new Bundle();
@@ -78,11 +97,16 @@ public class HttpConnnection {
 		hdl.sendMessage(msg);
 	}
 	
-	public static Bitmap getImage(String u) {
+	/**
+	 * 通过URL过去图片
+	 * @param url 图片连接
+	 * @return Bitmap
+	 */
+	public static Bitmap getImage(String url) {
 		URL picUrl = null;
 		Bitmap bm = null;
 		try {
-			picUrl = new URL(u);
+			picUrl = new URL(url);
 			bm = BitmapFactory.decodeStream(picUrl.openStream());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -94,6 +118,12 @@ public class HttpConnnection {
 		return bm;
 	}
 	
+	/**
+	 * 上传文件至指定连接，并获取返回信息
+	 * @param strurl 接收文件地址
+	 * @param filepath 本地文件路径
+	 * @return 服务器端返回的信息
+	 */
 	public static String uploadFile(String strurl,String filepath){
 		String end = "\r\n";
 		String twoHyphens = "--";
@@ -156,6 +186,12 @@ public class HttpConnnection {
 		return sb.toString();
 	}
 	
+	/**
+	 * POST一个XML字符串至指定地址，并返回相应内容
+	 * @param strUrl 接收XML文件地址
+	 * @param strXml XML文件内容
+	 * @return 服务器端返回的信息
+	 */
 	public static String uploadXmlStr(String strUrl,String strXml){
 		StringBuilder sb=new StringBuilder();
 		try{
@@ -197,6 +233,11 @@ public class HttpConnnection {
 		return sb.toString();
 	}
 
+	/**
+	 * 进行UTF8编码
+	 * @param s 需要编码的内容
+	 * @return 编码结果
+	 */
 	public static String encode(String s) {
 		try {
 			return URLEncoder.encode(s, "utf-8");

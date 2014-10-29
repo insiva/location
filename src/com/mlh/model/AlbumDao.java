@@ -15,12 +15,15 @@ import org.xmlpull.v1.XmlSerializer;
 
 import android.database.Cursor;
 
-import com.mlh.Config;
 import com.mlh.communication.IUpload;
 import com.mlh.communication.IXml;
 import com.mlh.database.DaoFactory;
 import com.mlh.database.DataBaseConnection;
 
+/**
+ * @author Matteo
+ *与相册有关的一些操作
+ */
 public class AlbumDao implements IXml<Album>,IUpload<Album>{
 
 	@Override
@@ -29,6 +32,9 @@ public class AlbumDao implements IXml<Album>,IUpload<Album>{
 		return null;
 	}
 
+	/**
+	 * 通过XML生成相册，继承自IXml
+	 */
 	@Override
 	public Album getByXmlString(String xmlStr) {
 		// TODO Auto-generated method stub
@@ -37,8 +43,10 @@ public class AlbumDao implements IXml<Album>,IUpload<Album>{
 		return album;
 	}
 	
+	/**
+	 * 读取XML文件，添加进相册
+	 */
 	public void readXml(Album album,String xmlStr){
-		Config.Log(xmlStr);
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		AlbumXmlHandler handler=null;
 		SAXParser parser = null;
@@ -67,6 +75,9 @@ public class AlbumDao implements IXml<Album>,IUpload<Album>{
 		read.close();
 	}
 	
+	/**
+	 * 获取还没有上传的照片列表
+	 */
 	public Album getUnUploadedPicture(){
 		String sql = "select p.*,l.latitude,l.longitude from picture as p inner join location_history as l on p.loc_guid=l.guid where p.uploaded=0";
 		Cursor cur = DataBaseConnection.query(sql);
@@ -90,6 +101,12 @@ public class AlbumDao implements IXml<Album>,IUpload<Album>{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	/**
+	 * @author Matteo
+	 *读取XML的Handler
+	 */
 	public class AlbumXmlHandler extends DefaultHandler {
 		private Album album;
 		
@@ -120,6 +137,9 @@ public class AlbumDao implements IXml<Album>,IUpload<Album>{
 
 		}
 	}
+	/**
+	 * 上传相册，继承自IUpload
+	 */
 	@Override
 	public void upload(Album album) {
 		for(int i=0;i<album.size();i++){

@@ -7,11 +7,21 @@ import android.os.Parcelable;
 
 import com.mlh.Config;
 
+/**
+ * @author Matteo
+ *照片类别类，照片有日期和地点两个类别
+ */
 public class Category implements Parcelable {
 	public static final String CATEGORY="CATEGORY";
 	public static final String CATEGORY_VALUE="CATEGORYVALUE";
 	public static final String CATEGORY_TYPE="CATEGORYTYPE";
+	/**
+	 * 照片的日期类别
+	 */
 	public static final int DAY_TYPE=0;
+	/**
+	 * 照片的地点类别
+	 */
 	public static final int SITE_TYPE=1;
 	public static final String PAGE_DAY=Config.HOST_MOBILE+"daylist.php";
 	public static final String PAGE_SITE=Config.HOST_MOBILE+"sitelist.php";
@@ -27,6 +37,10 @@ public class Category implements Parcelable {
 		this.CategoryValue=desc;
 		this.Count=c;
 	}
+	/**
+	 * 通过XML中的Attributes进行初始化
+	 * @param atts
+	 */
 	public Category(Attributes atts){
 		this.CategoryValue=atts.getValue("value");
 		this.Count=Integer.parseInt(atts.getValue("count"));
@@ -62,6 +76,10 @@ public class Category implements Parcelable {
 		return this.Type;
 	}
 	
+	/**
+	 * 获取类别的描述
+	 * @return
+	 */
 	public String getDescription(){
 		if(this.Type==Category.DAY_TYPE)
 		{

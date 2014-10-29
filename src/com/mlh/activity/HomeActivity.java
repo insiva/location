@@ -53,6 +53,10 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+/**
+ * @author Matteo
+ *首页Activity，默认显示照片地图和历史位置地图
+ */
 @SuppressLint("InflateParams")
 public class HomeActivity extends Activity implements OnClickListener,
 		OnMarkerClickListener, OnMapClickListener {
@@ -86,6 +90,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		this.Init();
+		Config.logCurrentThreadID("HomeActivity");
 	}
 
 	private void Init() {

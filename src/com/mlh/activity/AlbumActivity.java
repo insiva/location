@@ -22,6 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+/**
+ * @author Matteo
+ *œ‡≤·Activity
+ */
 @SuppressLint("InflateParams")
 public class AlbumActivity extends Activity implements OnGestureListener,OnClickListener {
 	private GestureDetector detector;

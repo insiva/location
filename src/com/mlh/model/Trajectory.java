@@ -3,11 +3,43 @@ package com.mlh.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * @author Matteo
+ *轨迹类，继承了Location，相比Location多了一些与轨迹相关的信息
+ */
 public class Trajectory extends Location implements Parcelable{
 	//private Location MLocation;
+	/**
+	 * 轨迹的描述，例如“2014-10-28 15:20:20 1.7km”
+	 */
 	private String Description;
-	private double Distance,Length,LatPace,LngPace;
-	private long TimeSpan,Duration;
+	/**
+	 * 距离最初起始点的距离
+	 */
+	private double Distance;
+	/**
+	 * 与下一个位置的距离
+	 */
+	private double Length;
+	/**
+	 * 在动态展示轨迹中，每0.1秒移动的纬度
+	 */
+	private double LatPace;
+	/**
+	 * 在动态展示轨迹中，每0.1秒移动的经度
+	 */
+	private double LngPace;
+	/**
+	 * 距下一个位置的时间间隔
+	 */
+	private long TimeSpan;
+	/**
+	 * 距最初位置的时间段
+	 */
+	private long Duration;
+	/**
+	 *在动态展示轨迹中，距下一个位置之间的展示需要的次数
+	 */
 	private int PaceNum;
 	
 	public Trajectory(Location loc){

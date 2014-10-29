@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+/**
+ * @author Matteo
+ *ÕÕÆ¬ListViewµÄAdapter
+ */
 public class PicListAdapter extends BaseAdapter {
 	private LayoutInflater lifPicItem;
 	private Album mAlbum = null;
@@ -56,7 +60,6 @@ public class PicListAdapter extends BaseAdapter {
 	@SuppressLint("InflateParams")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		PictureItemHolder hdPic;
 		if (convertView == null) {
 			hdPic = new PictureItemHolder(this);

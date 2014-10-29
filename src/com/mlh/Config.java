@@ -14,28 +14,87 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+/**
+ * @author Matteo
+ * *记录系统运行中一些常用的配置参数，包括：
+ * 1、服务器IP地址。
+ * 2、本地文件夹目录。
+ * 3、常用标志。
+ * 4、本机参数。
+ */
 public class Config {	
 	public static final String DEFAULT_DATEFORMAT="yyyy-MM-dd HH:mm:ss";
 	
 	public static final String SUCCESS="1";
+	/**
+	 * 服务器地址
+	 */
 	public static final String HOST="http://123.57.36.224/locationhistory/";
+	/**
+	 * 服务器端保存文件地址
+	 */
 	public static final String HOST_FILE=Config.HOST+"files/";
+	/**
+	 * 服务器端保存照片地址
+	 */
 	public static final String HOST_PICTURE=Config.HOST_FILE+"picture/";
+	/**
+	 * 服务器端页面文件夹地址
+	 */
 	public static final String HOST_MOBILE=Config.HOST+"mobile/";
+	/**
+	 * 应用名称
+	 */
 	public static final String APPLICATION_NAME="matteo";
+	/**
+	 * 北京坐标
+	 */
 	public static final LatLng BEIJING_LATLNG=new LatLng(39.914888,116.403874);
 	public static final String XML="XML";
+	/**
+	 * XML标志，用于Message中
+	 */
 	public static final int WHAT_XML=0x100;
+	/**
+	 * 定位间隔，默认为10分钟
+	 */
 	public static final int LOCATE_INTERVAL=10*60*1000;
 
+	/**
+	 * 当前应用的引用
+	 */
 	private static MApplication ThisApplication;
+	/**
+	 * WIFI状态，TRUE时表示WIFI可用且连接上，FALSE表示WIFI不可用
+	 */
 	private static boolean WifiState;
+	/**
+	 * 本地目录地址
+	 */
 	private static String DirectoryPath;
+	/**
+	 * 本地照片目录地址
+	 */
 	private static String PictureDirectoryPath;
+	/**
+	 * 本地临时文件夹地址
+	 */
 	private static String TempDirectoryPath;
+	/**
+	 * 本地临时照片目录地址
+	 */
 	private static String TempPicturePath;
+	/**
+	 * 定位服务引用
+	 */
 	private static LocateService MLocateService;
+	/**
+	 * 屏幕高度
+	 */
 	private static int ScreenHeight;
+	/**
+	 * 屏幕宽度
+	 */
 	private static int ScreenWidth;
 	
 	public static String getDirectoryPath(){
@@ -74,6 +133,9 @@ public class Config {
 		return Config.TempPicturePath;
 	}
 	
+	/**
+	 * 初始化函数
+	 */
 	public static void initialize(MApplication app){
 		Config.ThisApplication=app;
 		Config.initParams();
@@ -82,6 +144,9 @@ public class Config {
 		Config.startLocateService();
 	}
 	
+	/**
+	 * 初始化参数
+	 */
 	private static void initParams(){
 		int c=0;
 		while (!Environment.getExternalStorageState().equals(
@@ -120,6 +185,9 @@ public class Config {
 		Config.TempPicturePath = Config.TempDirectoryPath + "temp.jpg";
 	}
 	
+	/**
+	 * 初始化Wifi状态
+	 */
 	@SuppressWarnings("static-access")
 	private static void initWifiState(){
 		WifiManager wifiManager = (WifiManager) Config.ThisApplication
@@ -143,6 +211,9 @@ public class Config {
 		}
 	}
 
+	/**
+	 * 初始化屏幕参数
+	 */
 	private static void initScreenSize() {
 		DisplayMetrics dm = new DisplayMetrics();
 		WindowManager mWm = (WindowManager) Config.ThisApplication.getSystemService(Context.WINDOW_SERVICE);
@@ -151,6 +222,9 @@ public class Config {
 		Config.ScreenWidth = dm.widthPixels;
 	}
 	
+	/**
+	 * 开启LocateService，启动实时定位
+	 */
 	private static void startLocateService(){
 		if(Config.MLocateService==null){
 			Intent it = new Intent(Config.ThisApplication, LocateService.class);
@@ -160,6 +234,9 @@ public class Config {
 		}
 	}
 	
+	/**
+	 * 开启LocateService，启动实时定位
+	 */
 	public static void startLocate(){
 		Config.MLocateService.startLocate();
 	}
@@ -167,18 +244,32 @@ public class Config {
 	public static void setLocateService(LocateService ls){
 		Config.MLocateService=ls;
 	}
+
 	
+	/**
+	 * 获取String资源
+	 */
 	public static String getString(int resId){
 		return Config.ThisApplication.getString(resId);
 	}
+
 	
+	/**
+	 * 获取Color资源
+	 */
 	public static int getColor(int resId){
 		return Config.ThisApplication.getResources().getColor(resId);
 	}
 	
-	public static void Log(String l) {
+	public static void log(String l) {
 		System.out.println("------------------");
 		System.out.println(l);
+		System.out.println("------------------");
+	}
+	
+	public static void logCurrentThreadID(String t){
+		System.out.println("------------------");
+		System.out.println(t+",CurrentThreadID:"+Thread.currentThread().getId());
 		System.out.println("------------------");
 	}
 }

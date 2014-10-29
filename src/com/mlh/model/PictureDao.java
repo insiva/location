@@ -17,8 +17,15 @@ import com.mlh.database.DaoFactory;
 import com.mlh.database.DataBaseConnection;
 import com.mlh.database.IDao;
 
+/**
+ * @author Matteo
+ *与照片有关的一些操作
+ */
 public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> {
 
+	/**
+	 * 从XML中获取Picture实例
+	 *  */
 	@Override
 	public Picture getByAttributes(Attributes attrs) {
 		// TODO Auto-generated method stub
@@ -48,6 +55,12 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		
 	}
 	
+	/**
+	 * 向数据库中插入新照片信息
+	 * @param picName 照片名
+	 * @param locGuid 相关联的Location的ID
+	 * @return
+	 */
 	public Picture insert(String picName,long locGuid){
 		String insertSql = "insert into picture(guid,filename,loc_guid)" + " values("
 				+ (new Date()).getTime() + ",'" + picName + "',"
@@ -63,6 +76,9 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		
 	}
 
+	/**
+	 * 删除照片
+	 *  */
 	@Override
 	public void delete(long id) {
 		// TODO Auto-generated method stub
@@ -70,6 +86,9 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		DataBaseConnection.execute(sql);
 	}
 
+	/**
+	 * 从数据库中获得Picture实例
+	 * */
 	@Override
 	public Picture getById(long id) {
 		// TODO Auto-generated method stub
@@ -81,6 +100,9 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		return pic;
 	}
 
+	/**
+	 * 更新照片的上传信息
+	 */
 	@Override
 	public void updateUploadedFlag(long id) {
 		// TODO Auto-generated method stub
@@ -94,6 +116,9 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		return null;
 	}
 
+	/**
+	 * 从数据库的Cursor获取Picture实例
+*/
 	@Override
 	public Picture getByCursor(Cursor cur) {
 		// TODO Auto-generated method stub
@@ -110,6 +135,9 @@ public class PictureDao implements IDao<Picture>,IXml<Picture>,IUpload<Picture> 
 		return pic;
 	}
 
+	/**
+	 * 上传照片
+*/
 	@Override
 	public void upload(Picture pic) {
 		// TODO Auto-generated method stub

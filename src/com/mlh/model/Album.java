@@ -9,6 +9,10 @@ import com.mlh.communication.ITask;
 import com.mlh.communication.UploadTask;
 import com.mlh.database.DaoFactory;
 
+/**
+ * @author Matteo
+ *相册类，一个照片的集合
+ */
 public class Album extends ArrayList<Picture> implements ITask, Parcelable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,11 +23,17 @@ public class Album extends ArrayList<Picture> implements ITask, Parcelable {
 		
 	}
 	
+	/**
+	 * 添加照片，重写List的add函数
+	 */
 	@Override
 	public boolean add(Picture pic){
 		return super.add(pic);
 	}
 	
+	/**
+	 * 上传照片，重写ITask中的upload函数
+	 */
 	@Override
 	public void upload() {
 		// TODO Auto-generated method stub
@@ -31,6 +41,9 @@ public class Album extends ArrayList<Picture> implements ITask, Parcelable {
 	}
 	
 
+	/**
+	 * 把还没有上传的照片添加进上传队列
+	 */
 	public static void sendUnUploadedToUploadTask() {
 		// TODO Auto-generated method stub
 		
@@ -38,6 +51,9 @@ public class Album extends ArrayList<Picture> implements ITask, Parcelable {
 		UploadTask.addToUploadingQueue(album);
 	}
 	
+	/**
+	 * 读取xml文件，并添加进相册
+	 */
 	public void readXml(String xmlStr){
 		DaoFactory.getAlbumDaoInstance().readXml(this, xmlStr);
 	}

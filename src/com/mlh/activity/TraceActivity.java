@@ -30,6 +30,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 
+/**
+ * @author Matteo
+ *¶¯Ì¬ÑÝÊ¾¹ì¼£Activity
+ */
 public class TraceActivity extends Activity implements OnClickListener {
 	private static final long TRACE_INTERVAL=100;
 	MapView mapTrace;

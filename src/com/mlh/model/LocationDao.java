@@ -14,6 +14,10 @@ import com.mlh.communication.IXml;
 import com.mlh.database.DataBaseConnection;
 import com.mlh.database.IDao;
 
+/**
+ * @author Matteo
+ *与Location相关的一些操作
+ */
 public class LocationDao implements IDao<Location>,IXml<Location> {
 
 	@Override
@@ -34,6 +38,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		
 	}
 
+	/**
+	 * 从数据库中读取Location，继承自IDao
+	 */
 	@Override
 	public Location getById(long id){
 		// TODO Auto-generated method stub
@@ -44,6 +51,11 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		return loc;
 	}
 
+	/**
+	 * 向数据库中插入位置信息
+	 * @param bloc 定时获取的位置信息
+	 * @return
+	 */
 	public Location insert(BDLocation bloc){
 		String insertSql = "insert into location_history(guid,longitude,latitude,altitude,accuracy,speed,bearing,"
 				+ "address,province,city,district,street,streetnum) values("
@@ -76,6 +88,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		return this.getById(id);
 	}
 
+	/**
+	 * 从XML中获取Location实例
+	 */
 	@Override
 	public Location getByAttributes(Attributes attrs) {
 		// TODO Auto-generated method stub
@@ -98,6 +113,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 	}
 
 	
+	/**
+	 * 从Picture的XML信息中获取Location实例
+	 */
 	public Location getByPictureAttributes(Attributes attrs) {
 		// TODO Auto-generated method stub
 		Location loc=new Location();
@@ -124,6 +142,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		return null;
 	}
 
+	/**
+	 * 把Location信息插入XML中，继承自IXml
+	 */
 	@Override
 	public void addToXmlDocument(XmlSerializer xs,Location loc) throws Exception {
 		// TODO Auto-generated method stub
@@ -145,6 +166,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		xs.endTag(null, "location");
 	}
 
+	/**
+	 * 更改数据库中Location记录的上传状态
+	 * */
 	@Override
 	public void updateUploadedFlag(long id) {
 		// TODO Auto-generated method stub
@@ -158,6 +182,9 @@ public class LocationDao implements IDao<Location>,IXml<Location> {
 		return null;
 	}
 
+	/**
+	 * 从数据库Cursor中获取Location实例
+	 * */
 	@Override
 	public Location getByCursor(Cursor cur) {
 		// TODO Auto-generated method stub

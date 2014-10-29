@@ -24,6 +24,10 @@ import com.mlh.communication.IXml;
 import com.mlh.database.DaoFactory;
 import com.mlh.database.DataBaseConnection;
 
+/**
+ * @author Matteo
+ *一些与Route类相关的操作
+ */
 public class RouteDao implements IXml<Route>,IUpload<Route> {
 
 	@Override
@@ -32,6 +36,9 @@ public class RouteDao implements IXml<Route>,IUpload<Route> {
 		return null;
 	}
 
+	/**
+	 * 通过XML获取Route实例
+	 */
 	@Override
 	public Route getByXmlString(String xmlStr) {
 		// TODO Auto-generated method stub
@@ -65,6 +72,9 @@ public class RouteDao implements IXml<Route>,IUpload<Route> {
 	}
 
 	
+	/**
+	 * 获取还没有上传的Location集合
+	 */
 	public Route getUnUploadedLocation(){
 		String sql = "select * from location_history where uploaded=0";
 		Cursor cur = DataBaseConnection.query(sql);
@@ -77,6 +87,9 @@ public class RouteDao implements IXml<Route>,IUpload<Route> {
 		return route;
 	}
 	
+	/**
+	 * 将一个Route转化为XML字符串
+*/
 	@Override
 	public String toXml(Route t) {
 		// TODO Auto-generated method stub
@@ -108,6 +121,10 @@ public class RouteDao implements IXml<Route>,IUpload<Route> {
 		
 	}
 
+	/**
+	 * @author Matteo
+	 *读取Route的XmlHandler
+	 */
 	public class RouteXmlHandler extends DefaultHandler {
 		private Route route;
 		
@@ -139,6 +156,9 @@ public class RouteDao implements IXml<Route>,IUpload<Route> {
 		}
 	}
 
+	/**
+	 * 上传Route，继承自IUpload
+	 *  */
 	@Override
 	public void upload(Route t) {
 		// TODO Auto-generated method stub

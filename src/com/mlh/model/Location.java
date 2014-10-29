@@ -15,13 +15,35 @@ import com.baidu.mapapi.model.LatLng;
 import com.mlh.Config;
 import com.mlh.database.DaoFactory;
 
+/**
+ * @author Matteo
+ *位置类
+ */
 public class Location implements Parcelable {
 	public static final String ACTION_NEW_LOCATION="com.mlh.location.actionnewlocation";
+	/**
+	 * 单例，表示当前位置
+	 */
 	private static Location CurrentLocation;
+	/**
+	 * ID
+	 */
 	private long Guid;
+	/**
+	 * 纬度、经度、高度、精度
+	 */
 	private double Latitude, Longitude, Altitude, Accuracy;
+	/**
+	 * 时间
+	 */
 	private Date CreateTime;
+	/**
+	 * 速度、方向
+	 */
 	private float Speed, Bearing;
+	/**
+	 * 省、市、区县、接到、门牌号、地址
+	 */
 	private String Province, City, District, Street, StreetNum, Address;
 
 	public Location() {
@@ -177,6 +199,9 @@ public class Location implements Parcelable {
 		return this.Address;
 	}
 
+	/**
+	 * 生成此Location的XML节点
+	 */
 	public void addToXmlDocument(XmlSerializer xs) {
 		try {
 			DaoFactory.getLocationDaoInstance().addToXmlDocument(xs, this);

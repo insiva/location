@@ -21,7 +21,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
+/**
+ * @author Matteo
+ *’’∆¨¡–±ÌActivity
+ */
 public class PicListActivity extends Activity {
 
 	private RefreshListView lvPic;
@@ -31,6 +36,7 @@ public class PicListActivity extends Activity {
 	private int CurrentIndex;
 	private Category mCate;
 	private Button btnCate;
+	private LinearLayout llRlv;
 	
 	private ICallBack cbLoadMore=new ICallBack(){
 
@@ -70,8 +76,11 @@ public class PicListActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pic_list);
+		Config.logCurrentThreadID("PicListActivity");
 		this.mCate=(Category)this.getIntent().getExtras().getParcelable(Category.CATEGORY);
 		this.lvPic=(RefreshListView)this.findViewById(R.id.lvPic);
+		this.llRlv=(LinearLayout)this.findViewById(R.id.llRlv);
+		this.llRlv.measure(0, 0);
 		this.lvPic.SetCallBack(this.cbLoadMore);
 		this.plaList=new PicListAdapter(this,this.lvPic);
 		this.lvPic.setAdapter(this.plaList);
@@ -92,9 +101,6 @@ public class PicListActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//Intent intent=new Intent(PicListActivity.this,PicCategoryActivity.class);
-				//startActivity(intent);
 				finish();
 			}
 			

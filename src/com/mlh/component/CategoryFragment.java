@@ -18,6 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+/**
+ * @author Matteo
+ *CategoryActivity中的Fragment，共有两类，一类是基于日期展示，一类是基于地点展示
+ */
 public class CategoryFragment extends Fragment {
 	int cateType;
     RefreshListView rlvCate;
@@ -94,7 +98,6 @@ public class CategoryFragment extends Fragment {
 		};
 		HttpConnnection.getXMLByThread(this.getURL(0,LenUnit), this.hdlGetXML);
         return view;
-
     }
 
     @Override

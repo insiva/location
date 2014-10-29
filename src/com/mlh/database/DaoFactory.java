@@ -5,6 +5,10 @@ import com.mlh.model.LocationDao;
 import com.mlh.model.PictureDao;
 import com.mlh.model.RouteDao;
 
+/**
+ * @author Matteo
+ *Dao的工厂，获得各个类的Dao实例
+ */
 public class DaoFactory {
 	private static LocationDao locDao;
 	private static PictureDao picDao;

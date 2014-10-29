@@ -4,6 +4,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
 
+/**
+ * @author Matteo
+ *储存一些控件的LayoutParams
+ */
 public class MTLayoutParams {
 	private static LinearLayout.LayoutParams PicItemTextLL;
 	private static LayoutParams CateItem;

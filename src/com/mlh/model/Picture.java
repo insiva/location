@@ -23,11 +23,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateFormat;
 
+/**
+ * @author Matteo
+ *照片类
+ */
 public class Picture implements ITask,Parcelable{
+	/**
+	 * 正方形小图片标志，100x100
+	 */
 	public static final char SMALL_PICTURE_FLAG='S';
+	/**
+	 * 原始图片标志
+	 */
 	public static final char HEIGHT_PICTURE_FLAG='H';
+	/**
+	 * 中等图片标志，480x800
+	 */
 	public static final char MEDIUM_PICTURE_FLAG='M';
+	/**
+	 * 小图片标志，100x160
+	 */
 	public static final char LOW_PICTURE_FLAG='L';
+	/**
+	 * 图标标志
+	 */
 	public static final char ICON_PICTURE_FLAG='I';
 	public static final int MIN_PICTURE_SIZE=128;
 	public static final String RECEIVE_PICTURE_PAGE=Config.HOST_MOBILE+"recvpic.php";
@@ -126,6 +145,9 @@ public class Picture implements ITask,Parcelable{
 		this.MLocation=loc;
 	}
 	
+	/**
+	 * 直接获得实例的Bitmap属性
+	 */
 	public Bitmap getImage(char flag){
 		Bitmap bm=null;
 		String picPath=null;
@@ -162,6 +184,9 @@ public class Picture implements ITask,Parcelable{
 		return null;
 	}
 	
+	/**
+	 * 获取图片的Bitmap，如果本地不存在，则通过网络获取，并储存至本地
+	 */
 	public Bitmap fetchImage(char picFlag){
 		Bitmap bm = null;
 		String picUrl = null;
@@ -210,6 +235,9 @@ public class Picture implements ITask,Parcelable{
 		return bm;
 	}
 	
+	/**
+	 * 获取照片缓存的本地路径
+	 */
 	public String getTempPath(char picFlag){
 		String p=null;
 		switch(picFlag){
@@ -233,11 +261,17 @@ public class Picture implements ITask,Parcelable{
 		return p;
 	}
 	
+	/**
+	 * 确定本地是否存在此照片
+	 */
 	public boolean rawPicureExists(){
 		String fp=this.getPicturePath();
 		return Picture.picureExists(fp);
 	}
 	
+	/**
+	 * 确定某一路径的照片是否存在
+	 */
 	@SuppressWarnings("resource")
 	public static boolean picureExists(String picPath){
 		File f = new File(picPath);
@@ -290,10 +324,16 @@ public class Picture implements ITask,Parcelable{
 		bm=null;
 	}
 	
+	/**
+	 * 获取照片的GPS坐标
+	 */
 	public LatLng getLatLng(){
 		return this.MLocation.getLatLng();
 	}
 
+	/**
+	 * 上传照片，继承自ITask
+	 * */
 	@Override
 	public void upload() {
 		// TODO Auto-generated method stub

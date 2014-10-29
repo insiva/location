@@ -12,6 +12,10 @@ import android.net.NetworkInfo.State;
 import android.net.wifi.WifiManager;
 import android.os.Parcelable;
 
+/**
+ * @author Matteo
+ *接收Wifi状态改变广播
+ */
 public class WifiStateChangedReciver extends BroadcastReceiver {
 	public WifiStateChangedReciver() {
 	}

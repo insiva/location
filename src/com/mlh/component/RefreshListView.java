@@ -20,11 +20,14 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AbsListView.OnScrollListener;
 
 
+/**
+ * @author Matteo
+ *继承自ListView，通过下拉动作能够动态刷新ListView
+ */
 public class RefreshListView extends ListView implements OnScrollListener {
 	private LinearLayout llFooter;
 	private TextView tvRefreshDown,tvRefreshUp;
@@ -49,6 +52,7 @@ public class RefreshListView extends ListView implements OnScrollListener {
 		super(context);
 		// TODO Auto-generated constructor stub
 		this.ctxParent=context;
+		
 		this.setOnItemClickListener(new OnItemClickListener(){
 
 
@@ -58,14 +62,13 @@ public class RefreshListView extends ListView implements OnScrollListener {
 				// TODO Auto-generated method stub
 				cbActivity.clickItem(parent, view, position, id);
 			}});
-		this.AddFooter();
+		this.addFooter();
 	}
 
 	public RefreshListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		this.ctxParent=context;
-		//this.AddFooter();
 		this.setOnItemClickListener(new OnItemClickListener(){
 
 
@@ -75,8 +78,7 @@ public class RefreshListView extends ListView implements OnScrollListener {
 				// TODO Auto-generated method stub
 				cbActivity.clickItem(parent, view, position, id);
 			}});
-		this.AddFooter();
-		//this.llFooter.setVisibility(View.INVISIBLE);
+		this.addFooter();
 	}
 
 	@Override
@@ -181,8 +183,7 @@ public class RefreshListView extends ListView implements OnScrollListener {
 	    return super.onTouchEvent(ev);
 	}
 	
-	public void AddFooter(){
-
+	public void addFooter(){
 		this.llFooter = (LinearLayout) LayoutInflater.from(this.ctxParent).inflate(R.layout.layout_pic_list_footer, null);
 	    this.addFooterView(this.llFooter);
 	    this.tvRefreshDown = (TextView) findViewById(R.id.tvRefreshDown);
@@ -190,15 +191,14 @@ public class RefreshListView extends ListView implements OnScrollListener {
 	    this.pbRefresh = (ProgressBar) findViewById(R.id.pbRefresh);
 		this.SetRefreshDoneText();
 	    
-	    this.MeasureView(this.llFooter);
+	    this.measureView(this.llFooter);
 	    this.FooterHeight = this.llFooter.getMeasuredHeight();
 	    
-	    //this.setSelection(1);
 	    this.setOnScrollListener(this);
 	}
 	
 	@SuppressWarnings("deprecation")
-	private void MeasureView(View child) {
+	private void measureView(View child) {
 	    ViewGroup.LayoutParams p = child.getLayoutParams();
 	    if (p == null) {
 	        p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,

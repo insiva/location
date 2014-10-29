@@ -2,6 +2,7 @@ package com.mlh.activity;
 
 import java.util.ArrayList;
 
+import com.mlh.Config;
 import com.mlh.R;
 import com.mlh.component.CategoryFragment;
 import com.mlh.component.CategoryFragmentPagerAdapter;
@@ -20,6 +21,12 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+
+/**
+ * @author Matteo
+ *类别Activity，显示两个列表：日期列表和地点列表
+ */
 public class CategoryActivity extends FragmentActivity {
 	private ViewPager mPager;
     private ArrayList<Fragment> fragmentsList;
@@ -37,15 +44,15 @@ public class CategoryActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_category);
         resources = getResources();
+        init();
         initWidth();
-        initTextView();
         initViewPager();
+		Config.logCurrentThreadID("CategoryActivity");
 	}
 	
-	private void initTextView() {
+	private void init() {
 		tvTabDay = (TextView) findViewById(R.id.tvTabDay);
 		tvTabSite = (TextView) findViewById(R.id.tvTabSite);
-
         tvTabDay.setOnClickListener(new MyOnClickListener(0));
         tvTabSite.setOnClickListener(new MyOnClickListener(1));
     }

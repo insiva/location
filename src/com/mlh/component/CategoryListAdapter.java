@@ -23,6 +23,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+/**
+ * @author Matteo
+ *CategoryµÄListViewµÄAdapter
+ */
 public class CategoryListAdapter extends BaseAdapter {
 	//private LayoutInflater lifCateItem;
 	public ArrayList<Category> aryCate = null;
@@ -89,6 +93,7 @@ public class CategoryListAdapter extends BaseAdapter {
 		tvCate.setPadding(10, 10, 0, 10);
 		tvCate.setTextSize(25);
 		line.addView(tvCate,MTLayoutParams.GetCateItem());
+		line.measure(0, 0);
 		return line;
 	}
 

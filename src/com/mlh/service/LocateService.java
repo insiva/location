@@ -9,6 +9,10 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+/**
+ * @author Matteo
+ *¶¨Î»Service
+ */
 public class LocateService extends Service {
 	public static final String ADDRESS_TYPE="all";
 	private LocationClient mLocClient;

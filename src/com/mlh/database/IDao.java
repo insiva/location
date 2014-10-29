@@ -2,6 +2,11 @@ package com.mlh.database;
 
 import android.database.Cursor;
 
+/**
+ * @author Matteo
+ *一个与数据库操作相关的Interface
+ * @param <T>
+ */
 public interface IDao<T> {
 	
 	public void insert(T t); // 增加操作

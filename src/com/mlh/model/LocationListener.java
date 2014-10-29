@@ -7,8 +7,15 @@ import com.baidu.location.BDLocationListener;
 import com.mlh.Config;
 import com.mlh.database.DaoFactory;
 
+/**
+ * @author Matteo
+ *新位置监听类，继承了百度地图API中的BDLocationListener
+ */
 public class LocationListener  implements BDLocationListener {
 
+	/**
+	 * 接收新位置消息
+	 * */
 	@Override
 	public void onReceiveLocation(BDLocation bloc) {
 		//Receive Location 

@@ -23,6 +23,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
+/**
+ * @author Matteo
+ *一个路线的示意图，能够展示路线距离的折线图
+ */
 @SuppressLint("SimpleDateFormat")
 public class RouteView extends View {
 	public static final int HEIGHT = 160;

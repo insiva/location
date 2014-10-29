@@ -17,6 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * @author Matteo
+ *一个展示照片的Fragment，在拍照完毕后启用
+ */
 @SuppressLint("NewApi")
 public class PictureFragment extends Fragment {
 	// TODO: Rename parameter arguments, choose names that match

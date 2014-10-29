@@ -12,6 +12,10 @@ import com.mlh.communication.UploadTask;
 import com.mlh.database.DaoFactory;
 
 
+/**
+ * @author Matteo
+ *路线类，是一个轨迹的集合
+ */
 public class Route extends ArrayList<Trajectory> implements ITask,Parcelable {
 	public static final String ROUTE="ROUTE";
 	public static final String RECEIVE_ROUTE_PAGE=Config.HOST_MOBILE+"recvloc.php";
@@ -25,6 +29,9 @@ public class Route extends ArrayList<Trajectory> implements ITask,Parcelable {
 		this.LastTraj=null;
 	}
 	
+	/**
+	 *添加一个位置进入集合
+	 */
 	public boolean add(Location loc){
 		double distance=0,length=0;long timespan=0,dura=0;
 		Trajectory traj=new Trajectory(loc);
@@ -50,6 +57,9 @@ public class Route extends ArrayList<Trajectory> implements ITask,Parcelable {
 		return super.add(traj);
 	}
 	
+	/**
+	 * 添加一个轨迹进入集合
+	 * */
 	@Override
 	public boolean add(Trajectory traj){
 		return super.add(traj);
@@ -63,10 +73,18 @@ public class Route extends ArrayList<Trajectory> implements ITask,Parcelable {
 		super.clear();
 	}
 	
+	/**
+	 * 获得路线的总时间
+	 */
 	public long getDuration(){
 		return this.LastTraj.getCreateTime().getTime()-this.FirstTraj.getCreateTime().getTime();
 	}
 	
+	/**
+	 * 获得一个距离的文字表示，比如说444->444米，1677->1.6km
+	 * @param d 距离
+	 * @return
+	 */
 	public static String getDistanceText(int d) {
 		if (d < 1000)
 			return d + "m";
@@ -76,26 +94,41 @@ public class Route extends ArrayList<Trajectory> implements ITask,Parcelable {
 		return s;
 	}
 
+	/**
+	 * 获得路线的起始时间
+	 */
 	public long getStartTime(){
 		return this.FirstTraj.getCreateTime().getTime();
 	}
 
+	/**
+	 * 获得路线的结束时间
+	 */
 	public long getEndTime(){
 		return this.LastTraj.getCreateTime().getTime();
 	}
 	
+	/**
+	 * 上传路线中的Location
+	 * */
 	@Override
 	public void upload() {
 		// TODO Auto-generated method stub
 		DaoFactory.getRouteDaoInstance().upload(this);
 	}
 	
+	/**
+	 * 把还没有上传的Location添加进上传队列
+	 */
 	public static void sendUnUploadedToUploadTask() {
 		// TODO Auto-generated method stub
 		Route route=DaoFactory.getRouteDaoInstance().getUnUploadedLocation();
 		UploadTask.addToUploadingQueue(route);
 	}
 	
+	/**
+	 * 获得距起始位置最远的一个Location的距离
+	 */
 	public double getMaxDistance(){
 		return this.MaxDistance;
 	}
